@@ -1,0 +1,25 @@
+# SpeedServer2 map.txt format:
+# team-id, tournament-id, game-speed
+#
+# first two fields are optional, but game-speed is required
+# - if team-id is omitted, but tournament-id is present,
+#   then speed is set for all games in that tournament
+# - if team-id is present, but tournament-id is omitted,
+#   then speed is set when this team plays home at any tournament.
+#
+# Anything after "#" symbol is considered a comment and is ignored by map reader
+#
+# keep in mind that many tournaments have multiple id (Like, UEFA Champions League, for example)
+# so you need to add a separate line to the map for each of those ids 
+#
+# Order of evaluation:
+# - more specific rules take precedent over less specific rules
+# - competition-wide setting takes precedent over team-specific setting
+#   (if you want to change that: assign competition-specific speed for a specific team)
+#
+#
+# Examples:
+# ,,-0.65         # Global game speed setting: -0.65
+# 101, , 3        # Arsenal plays at game speed 3
+# 101, 17, 3.2    # Arsenal plays home matches in England League at game speed 3.2
+# , 65535, -1.35  # Exhibition mode game speed: -1.35
